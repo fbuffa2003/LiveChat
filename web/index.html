@@ -20,23 +20,45 @@
                 $('#BpmUrl').html(getPropertyValue(data.chat, 'BpmUrl'));
             });
 
-          
-            // Sending and receiving data in JSON format using POST mothod
-            //
-            xhr = new XMLHttpRequest();
-            var url = "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/AuthService.svc/Login";
-            xhr.open("POST", url, true);
-            xhr.setRequestHeader("Content-type", "application/json");
-            xhr.onreadystatechange = function () { 
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert(xhr.responseText);
-                    var json = JSON.parse(xhr.responseText);
-                    console.log(json.email + ", " + json.password)
-                }
-            }
-            var data = JSON.stringify({"UserName":"Administrator 1","UserPassword":"Administrator 1"});
-            xhr.send(data);
+
+           
             LiveChat.init();
+        </script>
+        
+        
+        
+        <script>
+            public static CookieContainer AuthCookie = new CookieContainer();
+              var authRequest = HttpWebRequest.Create("https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/AuthService.svc/Login") as HttpWebRequest;
+    // Determining the request method.
+    authRequest.Method = "POST";
+    // Determining the type of the request content.
+    authRequest.ContentType = "application/json";
+
+    // Including the cookie use into the request.
+    authRequest.CookieContainer = AuthCookie;
+
+    // Placing the user account data to the request subject.
+    using (var requesrStream = authRequest.GetRequestStream())
+    {
+        using (var writer = new StreamWriter(requesrStream))
+        {
+            writer.Write(@"{
+                ""UserName"":""Administrator 1"",
+                ""UserPassword"":""Administrator 1""
+            }");
+        }
+    }
+    // Receiving an answer from the server. If the authentication is successful, cookies which may be used 
+    // for further requests will be placed in the AuthCookie property.
+    using (var response = (HttpWebResponse)authRequest.GetResponse())
+    {
+        if (AuthCookie.Count > 0)
+        {
+            return true;
+        }
+    }
+    return false;
         </script>
     </head>
     <body>
