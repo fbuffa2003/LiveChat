@@ -17,6 +17,79 @@
                 $('#groupID').html(getPropertyValue(data.chat, 'groupID'));
                 $('#BpmUrl').html(getPropertyValue(data.chat, 'BpmUrl'));
             });
+
+                    // String of address bpm’online OData servise.
+                    private const string serverUri = "http://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/EntityDataService.svc/";
+                    private const string authServiceUtri = "http://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login";
+
+                    // Links to XML name spaces.
+                    private static readonly XNamespace ds = "http://schemas.microsoft.com/ado/2007/08/dataservices";
+                    private static readonly XNamespace dsmd = "http://schemas.microsoft.com/ado/2007/08/dataservices/metadata";
+                    private static readonly XNamespace atom = "http://www.w3.org/2005/Atom"; 
+                    GetOdataCollectionByAuthByHttpExample("Administrator 2", "Administrator 2");
+                    public static void GetOdataCollectionByAuthByHttpExample(string userName, string userPassword)
+                        {
+                            // Creating an authentication request.
+                            var authRequest = HttpWebRequest.Create(authServiceUtri) as HttpWebRequest;
+                            authRequest.Method = "POST";
+                            authRequest.ContentType = "application/json";
+                            var bpmCookieContainer = new CookieContainer();
+                            // Including the cookie use into the request.
+                            authRequest.CookieContainer = bpmCookieContainer;
+                            // Receiving a stream associated with the authentication request.
+                            using (var requesrStream = authRequest.GetRequestStream())
+                            {
+                                // Recording the BPMonline user accounts and additional request parameters into the stream.
+                                using (var writer = new StreamWriter(requesrStream))
+                                {
+                                    writer.Write(@"{
+                                                        ""UserName"":""" + userName + @""",
+                                                        ""UserPassword"":""" + userPassword + @""",
+                                                        ""SolutionName"":""TSBpm"",
+                                                        ""TimeZoneOffset"":-120,
+                                                        ""Language"":""Ru-ru""
+                                                        }");
+                                }
+                            }
+                            // Receiving an answer from the server. If the authentication is successful, cookies will placed in the
+                            // bpmCookieContainer object and they may be used for further requests.
+                            using (var response = (HttpWebResponse)authRequest.GetResponse())
+                            {
+                                // Creating a request for data reception from the OData service.
+                                var dataRequest = HttpWebRequest.Create(serverUri + "ContactCollection?select=Id, Name")
+                                                        as HttpWebRequest;
+                                // The HTTP method GET is used to receive data.
+                                dataRequest.Method = "GET";
+                                // Adding pre-received authentication cookie to the data receipt request.
+                                dataRequest.CookieContainer = bpmCookieContainer;
+                                // Receiving a response from the server.
+                                using (var dataResponse = (HttpWebResponse)dataRequest.GetResponse())
+                                {
+                                    // Uploading the server response to an xml-document for further processing.
+                                    XDocument xmlDoc = XDocument.Load(dataResponse.GetResponseStream());
+                                    // Receiving the collection of contact objects that comply with the request condition.
+                                    var contacts = from entry in xmlDoc.Descendants(atom + "entry")
+                                                   select new
+                                                       {
+                                                           Id = new Guid(entry.Element(atom + "content")
+                                                                              .Element(dsmd + "properties")
+                                                                              .Element(ds + "Id").Value),
+                                                           Name = entry.Element(atom + "content")
+                                                                       .Element(dsmd + "properties")
+                                                                       .Element(ds + "Name").Value
+                                                       };
+                                    foreach (var contact in contacts)
+                                    {
+                                        // Implementing actions with contacts.
+                                    }
+                                }
+                            } 
+            
+            
+            
+            
+            
+            
             LiveChat.init();
         </script>
     </head>
