@@ -20,22 +20,22 @@
                 $('#BpmUrl').html(getPropertyValue(data.chat, 'BpmUrl'));
             });
 
-                  
-            var http = new XMLHttpRequest();
+          
+            // Sending and receiving data in JSON format using POST mothod
+            //
+            xhr = new XMLHttpRequest();
             var url = "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/AuthService.svc/Login";
-            var params = "UserName=Administrator 1&UserPassword=Administrator 1";
-            http.open("POST", url, true);
-
-            //Send the proper header information along with the request
-            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            http.onreadystatechange = function() {//Call a function when the state changes.
-                if(http.readyState == 4 && http.status == 200) {
-                    alert(http.responseText);
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.onreadystatechange = function () { 
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText);
+                    var json = JSON.parse(xhr.responseText);
+                    console.log(json.email + ", " + json.password)
                 }
             }
-            http.send(params);
-            
+            var data = JSON.stringify({"UserName":"Administrator 1","UserPassword":"Administrator 1"});
+            xhr.send(data);
             LiveChat.init();
         </script>
     </head>
