@@ -34,6 +34,7 @@
             var resultDiv = $("#resultDivContainer");
       $(document).ready(function () {
             $.ajax({
+                xhrFields: {cors: false},
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
                 contentType: 'application/json',
                 type: "POST",
