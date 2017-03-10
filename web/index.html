@@ -53,7 +53,10 @@
               
             });
             
-            
+            response = HttpResponse(json.dumps('{"status" : "success"}'))
+            response.__setitem__("Content-type", "application/json")
+            response.__setitem__("Access-Control-Allow-Origin", "*")
+
            }); 
             
             function Set_Cookie( name, value, expires, path, domain, secure )
