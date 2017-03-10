@@ -9,6 +9,7 @@
             $('#chatPluginContainer').hide();
             $('#authorizeError').show();
         },
+        
         /**
          * Custom logic on authorize event
          */
