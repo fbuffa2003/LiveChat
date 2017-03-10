@@ -38,7 +38,7 @@
                 type: "POST",
                 data: {
                 "UserName":"Administrator 1",
-                "UserPassword":"Administrator 1"
+                "UserPassword":"Administrator 1", 
             },
                 dataType: "json",
                 success: function (result) {
@@ -51,7 +51,7 @@
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                alert(xhr.getResponseHeader());
+                alert(xhr.getResponseHeader(Cookie));
                 
                 }
             });
