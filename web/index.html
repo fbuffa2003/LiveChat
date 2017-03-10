@@ -20,7 +20,30 @@
                 $('#BpmUrl').html(getPropertyValue(data.chat, 'BpmUrl'));
             });
             
-           
+            var request = require('request');
+            var cookie;
+            var headers = {
+                'content-type': 'application/json',
+                'accept': 'application/json'
+            };
+
+            var form = {
+                "UserName":"Administrator 1",
+                "UserPassword":"Administrator 1"
+            };
+
+            request.post({url: 'https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login', body: JSON.stringify(form), headers: headers}, function(err, res, body){
+                if(err) console.log('login error');
+
+                // get cookie
+                var setCookie = res.headers['set-cookie'];
+                cookie = setCookie[0].split(' ')[0] + ' ' + setCookie[1].split(' ')[0];
+
+                console.log('login success');
+            });
+            
+           alert(cookie);
+            
             LiveChat.init();
         </script>
    
