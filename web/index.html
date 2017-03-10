@@ -4,7 +4,7 @@
         <title>Sample App</title>
         <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
         <script src="//cdn.livechatinc.com/boilerplate/1.0.js"></script>
-        <script data-main="js/requiere.js" src="js/require.js"></script>
+       
         <link rel="stylesheet" href="//cdn.livechatinc.com/boilerplate/1.0.css">
         <input type="text" name="txtuser" value= engineer>
         <input type="text" name="txtpass" value= engineer>
@@ -21,29 +21,7 @@
                 $('#BpmUrl').html(getPropertyValue(data.chat, 'BpmUrl'));
             });
             
-            var request = require('request');
-            var cookie;
-            var headers = {
-                'content-type': 'application/json',
-                'accept': 'application/json'
-            };
-
-            var form = {
-                "UserName":"Administrator 1",
-                "UserPassword":"Administrator 1"
-            };
-
-            request.post({url: 'https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login', body: JSON.stringify(form), headers: headers}, function(err, res, body){
-                if(err) console.log('login error');
-
-                // get cookie
-                var setCookie = res.headers['set-cookie'];
-                cookie = setCookie[0].split(' ')[0] + ' ' + setCookie[1].split(' ')[0];
-
-                console.log('login success');
-            });
             
-           alert(cookie);
             
             LiveChat.init();
         </script>
