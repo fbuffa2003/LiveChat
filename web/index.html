@@ -44,6 +44,7 @@
                     } 
             $.ajax({
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
+                contentType: 'application/json; charset=utf-8',
                 type: "POST",
                 data: {
                 "UserName":"Administrator 1",
@@ -58,13 +59,13 @@
                         default:
                             resultDiv.html(result);
                     }
-                     alert(xhr.getResponseHeader('Set-Cookie'));
+                   
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                 
 
                 alert(xhr.status);
-                alert(xhr.getAllResponseHeaders());
+               alert(xhr.getResponseHeader("Set-Cookie")
                 
                 }
             });
