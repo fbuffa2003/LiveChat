@@ -36,13 +36,12 @@
             $.ajax({
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
                 contentType: 'application/json',
-                withCredentials: true,
                 type: "POST",
                 data: {
                 "UserName":"Administrator 1",
                 "UserPassword":"Administrator 1", 
             },
-                dataType: 'json',
+                dataType: 'jsonp',
                 success: function (result) {
                     alert(result);
                     switch (result) {
