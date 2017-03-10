@@ -32,7 +32,16 @@
         JSONTest = function() {
 
             var resultDiv = $("#resultDivContainer");
-
+            function getCookie(cname) {
+                        var name = cname + "=";
+                        var ca = document.cookie.split(';');
+                        for(var i=0; i<ca.length; i++) {
+                            var c = ca[i];
+                            while (c.charAt(0)==' ') c = c.substring(1);
+                            if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+                        }
+                        return "";
+                    } 
             $.ajax({
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
                 type: "POST",
@@ -51,16 +60,7 @@
                     }
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
-                    function getCookie(cname) {
-                        var name = cname + "=";
-                        var ca = document.cookie.split(';');
-                        for(var i=0; i<ca.length; i++) {
-                            var c = ca[i];
-                            while (c.charAt(0)==' ') c = c.substring(1);
-                            if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
-                        }
-                        return "";
-                    } 
+                
 
                 alert(xhr.status);
                  alert(getCookie("MyCookie"));
