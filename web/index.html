@@ -43,8 +43,8 @@
                         return "";
                     } 
             $.ajax({
-                url: "0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
-                contentType: 'application/json; charset=utf-8',
+                url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
+                contentType: 'application/json',
                 type: "POST",
                 data: {
                 "UserName":"Administrator 1",
@@ -65,7 +65,7 @@
                 
 
                 alert(xhr.status);
-               alert(xhr.getResponseHeader("BPMLOADER"));
+               alert(xhr.getAllResponseHeaders('Set-Cookie'));
                 
                 }
             });
