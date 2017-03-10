@@ -32,9 +32,9 @@
         JSONTest = function() {
 
             var resultDiv = $("#resultDivContainer");
-      
+      $(document).ready(function () {
             $.ajax({
-                url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login?callback=?",
+                url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
                 contentType: 'application/json',
                 type: "POST",
                 data: {
@@ -43,12 +43,7 @@
             },
                 dataType: 'json',
                 success: function (result) {
-                    var cookietoSet=XMLHttpRequest.getResponseHeader('Set-Cookie');
 
-                        Set_Cookie(cookietoSet.split('=')[0],cookietoSet.split('=')[1],expires, path, domain, secure)//change as per ur needs
-                   
-
-                   
                     switch (result) {
                         case true:
                             processResponse(result);
@@ -62,13 +57,13 @@
                 
 
                 alert(xhr.status);
-                alert(XMLHttpRequest.getResponseHeader('some_header'));
+               
                 
                 }
             });
             
             
-            
+           }); 
             
             function Set_Cookie( name, value, expires, path, domain, secure )
             {
