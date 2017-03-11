@@ -26,7 +26,7 @@
             LiveChat.init();
         </script>
         
-        <script data-require="jquery@2.1.1" data-semver="1.9.1" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+       
         <script type="text/javascript">
 
         JSONTest = function() {
@@ -34,10 +34,16 @@
             var resultDiv = $("#resultDivContainer");
       $(document).ready(function () {
             $.ajax({
-                xhrFields: {cors: false},
-                beforeSend: function (xhr) {
-                xhr.setRequestHeader('X-My-Custom-Header-Name', '42');
-                },
+                xhrFields: {
+    // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
+    // This can be used to set the 'withCredentials' property.
+    // Set the value to 'true' if you'd like to pass cookies to the server.
+    // If this is enabled, your server must respond with the header
+    // 'Access-Control-Allow-Credentials: true'.
+    withCredentials: false
+  },
+
+headers: { 'Access-Control-Allow-Origin': '*' },
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
                 contentType: 'application/json',
                 type: "POST",
