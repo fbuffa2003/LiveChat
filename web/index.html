@@ -77,9 +77,6 @@
        
       $(document).ready(function () {
             $.ajax({
-         xhrFields: {
-    withCredentials: true
-},
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/EntityDataService.svc/ContactCollection?$filter=Id%20eq%20guid%279117252a-996b-427f-999a-8d7b5d03feda%27",
                 contentType: 'application/json',
                 type: "GET",
@@ -87,7 +84,7 @@
             dataType: "text",
             success: function(xml) {
              console.log(xml);             
-               
+               alert(xml);
           },
             error: function (xhr, status) {
                 console.log(xhr);       
