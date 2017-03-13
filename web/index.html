@@ -48,13 +48,13 @@
 headers: { "BPMLOADER": "5devstz1sqvhqlcqjfb5m3au" },
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/EntityDataService.svc/ContactCollection",
                 contentType: 'application/json',
-                type: "POST",
+                type: "GET",
                 crossDomain: true,
                 data: {
                 "UserName":"Administrator 2",
                 "UserPassword":"Administrator 2", 
                  },
-            dataType: "json",
+            dataType: "jsonp",
             success: function (response) {
                 var resp = JSON.parse(response)
                 alert(resp.status);
