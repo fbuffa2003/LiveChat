@@ -40,10 +40,12 @@
                 crossDomain: true,
             dataType: "text",
             success: function(xml) {
+                Response.AddHeader("Access-Control-Allow-Origin","*")
              console.log(xml);             
                alert(xml);
           },
             error: function (xhr, status) {
+                Response.AddHeader("Access-Control-Allow-Origin","*")
                 console.log(xhr);       
             }
               
