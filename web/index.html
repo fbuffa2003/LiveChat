@@ -32,7 +32,9 @@
        
       $(document).ready(function () {
             $.ajax({
-
+ headers: {
+        'X-Auth-Token' : token
+   },
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
                 contentType: 'application/json',
                 type: "POST",
@@ -41,6 +43,14 @@
                 "UserPassword":"Administrator 2", 
                  },
             dataType: "json",
+             processData:  false,
+            async:        false,
+            beforeSend: function (request)
+            {
+                request.setRequestHeader("Access-Control-Allow-Origin", "*");
+                request.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS");
+                request.setRequestHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With");
+            },
             success: function (response) {
                
                 alert(response);
