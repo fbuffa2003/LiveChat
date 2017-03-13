@@ -31,6 +31,9 @@
            
       $(document).ready(function () {
             $.ajax({
+                 xhrFields: {
+    withCredentials: true
+},
                 url: "http://bglobaldemo.entrydns.org:3333/WS/bpmOnline.asmx?op=ObtenerIDContacto",
                 contentType: 'text/xml; charset=utf-8',
                 type: "GET",
