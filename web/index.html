@@ -83,9 +83,13 @@
                 type: "GET",
                 crossDomain: true,
             dataType: "xml",
-            success: function (response) {
-                
-                alert(response);
+            success: function(xml) {
+                $(xml).find('members').each(function(){
+                    $(this).find("name").each(function(){
+                        var name = $(this).text();
+                        alert(name);
+                    });
+                });
             },
             error: function (xhr, status) {
                 alert("error");
