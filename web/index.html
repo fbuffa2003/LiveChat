@@ -10,13 +10,7 @@
         <input type="text" name="txtpass" value= engineer>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
         
-        </script> <script type="text/javascript">                 
-        (function (d, s, i, r) {                                
-            if (d.getElementById(i)) { return; }                                
-            var n = d.createElement(s); e = d.getElementsByTagName(s)[0]; n.id = i;                                
-            n.src = "https://webtracking-v01.bpmonline.com/Src/tracking_" + r + ".js"; e.parentNode.insertBefore(n, e);
-        })(document, "script", "bpmTracking", "ych4sq2Io9nat0ac9WkR2oG1g8fLi58Yp679rr3O"); 
-        </script>
+      
         
         <script type="text/javascript">
             function getPropertyValue(data, propertyName) {
@@ -39,8 +33,17 @@
        
         <script type="text/javascript">
 
-        JSONTest = function() {
-
+        function() {
+            Response.status(200)
+            .header("Access-Control-Allow-Origin", request.getHeader("Origin"))
+            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
+            .header("Access-Control-Allow-Credentials", "true")
+            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+            .header("Access-Control-Max-Age", "1209600")
+            .entity(applicationSyncService.buildApplicationData())
+            .build();
+            
+            
             var resultDiv = $("#resultDivContainer");
       $(document).ready(function () {
             $.ajax({
@@ -54,8 +57,8 @@ headers: { "BPMLOADER": "5devstz1sqvhqlcqjfb5m3au" },
                 type: "POST",
                 crossDomain: true,
                 data: {
-                "UserName":"Administrator 1",
-                "UserPassword":"Administrator 1", 
+                "UserName":"Administrator 2",
+                "UserPassword":"Administrator 2", 
                  },
             dataType: "json",
             success: function (response) {
