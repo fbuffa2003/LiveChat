@@ -6,7 +6,10 @@
         <script src="//cdn.livechatinc.com/boilerplate/1.0.js"></script>
        
         <link rel="stylesheet" href="//cdn.livechatinc.com/boilerplate/1.0.css">
-
+   
+        
+        
+        
         
         <script type="text/javascript">
             function getPropertyValue(data, propertyName) {
@@ -21,7 +24,18 @@
                 $('#BpmUrl').html(getPropertyValue(data.chat, 'BpmUrl'));
                 
                 
-                     function Get() {
+                   
+            });
+            
+            
+            
+            LiveChat.init();
+        </script>
+  
+    </head>
+    <body>
+         <script type="text/javascript">
+               function ConectarBPM() {
             Response.status(200)
             .header("Access-Control-Allow-Origin", request.getHeader("Origin"))
             .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
@@ -30,9 +44,7 @@
             .header("Access-Control-Max-Age", "1209600")
             .entity(applicationSyncService.buildApplicationData())
             .build();
-            
-            
-            var resultDiv = $("#resultDivContainer");
+       
       $(document).ready(function () {
             $.ajax({
 
@@ -63,22 +75,8 @@ headers: { "BPMLOADER": "5devstz1sqvhqlcqjfb5m3au" },
        
         };
 
-                
-                
-                
-                
-                
-            });
-            
-            
-            
-            LiveChat.init();
-        </script>
-  
-    </head>
-    <body>
-        
-        <div id="resultDivContainer"></div>
+         </script>
+   
         
         <div class="chat-plugin" id="chatPluginContainer">
             <ul class="chat-plugin__menu">
