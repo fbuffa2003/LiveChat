@@ -19,17 +19,9 @@
                 $('#chatID').html(getPropertyValue(data.chat, 'id'));
                 $('#groupID').html(getPropertyValue(data.chat, 'groupID'));
                 $('#BpmUrl').html(getPropertyValue(data.chat, 'BpmUrl'));
-            });
-            
-            
-            
-            LiveChat.init();
-        </script>
-        
-       
-        <script type="text/javascript">
-
-        function Get() {
+                
+                
+                     function Get() {
             Response.status(200)
             .header("Access-Control-Allow-Origin", request.getHeader("Origin"))
             .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
@@ -71,9 +63,18 @@ headers: { "BPMLOADER": "5devstz1sqvhqlcqjfb5m3au" },
        
         };
 
+                
+                
+                
+                
+                
+            });
+            
+            
+            
+            LiveChat.init();
         </script>
-   
-        
+  
     </head>
     <body>
         
