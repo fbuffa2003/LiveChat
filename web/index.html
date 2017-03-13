@@ -51,10 +51,13 @@
                 request.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS");
                 request.setRequestHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With");
             },
-            success: function (response) {
+            success:  function(xml) {
+             console.log(xml);
+        });
+                
                
                 alert(response);
-            },
+         
             error: function (xhr, status) {
                 alert("error");
             }
