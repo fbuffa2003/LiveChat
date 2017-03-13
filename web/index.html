@@ -35,15 +35,15 @@
                xhrFields: {
     withCredentials: true
 },
-                 crossDomain: false,
+                
                 url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
                 contentType: 'application/json',
                 type: "POST",
+                dataType: "jsonp",
                 data: {
                 "UserName":"Administrator 2",
                 "UserPassword":"Administrator 2", 
                  },
-            dataType: "json",
              processData:  false,
             async:        false,
             beforeSend: function (request)
