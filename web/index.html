@@ -52,14 +52,11 @@
                 request.setRequestHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With");
             },
             success:  function(xml) {
-             console.log(xml);
-        });
-                
-               
+             console.log(xml);             
                 alert(response);
-         
+          },
             error: function (xhr, status) {
-                alert("error");
+                console.log(xhr);
             }
               
             });
@@ -87,10 +84,11 @@
                 crossDomain: true,
             dataType: "text",
             success: function(xml) {
-           alert(xml);
-            },
+             console.log(xml);             
+               
+          },
             error: function (xhr, status) {
-                alert("error");
+                console.log(xhr);       
             }
               
             });
