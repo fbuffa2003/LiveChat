@@ -82,14 +82,9 @@
                 contentType: 'application/json',
                 type: "GET",
                 crossDomain: true,
-            dataType: "xml",
+            dataType: "text",
             success: function(xml) {
-                $(xml).find('members').each(function(){
-                    $(this).find("name").each(function(){
-                        var name = $(this).text();
-                        alert(name);
-                    });
-                });
+           alert(xml);
             },
             error: function (xhr, status) {
                 alert("error");
