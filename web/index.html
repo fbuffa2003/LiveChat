@@ -26,60 +26,13 @@
     </head>
     <body>
         
-                 <script type="text/javascript">
-           
-           
-       
-      $(document).ready(function () {
-            $.ajax({
-               xhrFields: {
-    withCredentials: true
-},
-                
-                url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
-                contentType: 'application/json',
-                type: "POST",
-                dataType: "jsonp",
-                data: {
-                "UserName":"Administrator 2",
-                "UserPassword":"Administrator 2", 
-                 },
-             processData:  false,
-            async:        false,
-            beforeSend: function (request)
-            {
-                request.setRequestHeader("Access-Control-Allow-Origin", "*");
-                request.setRequestHeader("Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS");
-                request.setRequestHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With");
-            },
-            success:  function(xml) {
-             console.log(xml);             
-                alert(response);
-          },
-            error: function (xhr, status) {
-                console.log(xhr);
-            }
-              
-            });
-           }); 
-       
-     
-         </script>
-
-        
-        
-        
-        
-        
-        
+  
          <script type="text/javascript">
            
-           
-       
       $(document).ready(function () {
             $.ajax({
-                url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/EntityDataService.svc/ContactCollection?$filter=Id%20eq%20guid%279117252a-996b-427f-999a-8d7b5d03feda%27",
-                contentType: 'application/json',
+                url: "http://bglobaldemo.entrydns.org:3333/WS/bpmOnline.asmx?op=ObtenerIDContacto",
+                contentType: 'text/xml; charset=utf-8',
                 type: "GET",
                 crossDomain: true,
             dataType: "text",
