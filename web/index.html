@@ -7,10 +7,6 @@
        
         <link rel="stylesheet" href="//cdn.livechatinc.com/boilerplate/1.0.css">
    
-        
-        
-        
-        
         <script type="text/javascript">
             function getPropertyValue(data, propertyName) {
                 return undefined === data[propertyName] ? '' : data[propertyName];
@@ -22,31 +18,26 @@
                 $('#chatID').html(getPropertyValue(data.chat, 'id'));
                 $('#groupID').html(getPropertyValue(data.chat, 'groupID'));
                 $('#BpmUrl').html(getPropertyValue(data.chat, 'BpmUrl'));
-                
-                
-                   
+                 
             });
-            
-            
-            
-            LiveChat.init();
+           LiveChat.init();
         </script>
   
     </head>
     <body>
-         <script type="text/javascript">
+        
+                 <script type="text/javascript">
            
            
        
       $(document).ready(function () {
             $.ajax({
                 
-
   xhrFields: {
         withCredentials: true
     },
 headers: { "BPMLOADER": "5devstz1sqvhqlcqjfb5m3au" },
-                url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/EntityDataService.svc/ContactCollection",
+                url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/ServiceModel/AuthService.svc/Login",
                 contentType: 'application/json',
                 type: "POST",
                 crossDomain: true,
@@ -54,10 +45,42 @@ headers: { "BPMLOADER": "5devstz1sqvhqlcqjfb5m3au" },
                 "UserName":"Administrator 2",
                 "UserPassword":"Administrator 2", 
                  },
-            dataType: "jsonp",
+            dataType: "json",
             success: function (response) {
                 var resp = JSON.parse(response)
                 alert(resp.status);
+            },
+            error: function (xhr, status) {
+                alert("error");
+            }
+              
+            });
+           }); 
+       
+     
+         </script>
+
+        
+        
+        
+        
+        
+        
+         <script type="text/javascript">
+           
+           
+       
+      $(document).ready(function () {
+            $.ajax({
+
+                url: "https://0384564-sales-enterprise-marketing-service-enterprise-demo.bpmonline.com/0/ServiceModel/EntityDataService.svc/ContactCollection?$filter=Id%20eq%20guid%279117252a-996b-427f-999a-8d7b5d03feda%27",
+                contentType: 'application/json',
+                type: "GET",
+                crossDomain: true,
+            dataType: "xml",
+            success: function (response) {
+                
+                alert(response);
             },
             error: function (xhr, status) {
                 alert("error");
