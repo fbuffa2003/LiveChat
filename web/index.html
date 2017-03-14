@@ -26,42 +26,18 @@
     </head>
     <body>
    <script type="text/javascript">
-   
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open('GET', 'https://bglobaldemo.entrydns.org/WS/bpmOnline.asmx?op=ObtenerIDContacto', false);
 
-            // build SOAP request
-            var sr =
-                '<?xml version="1.0" encoding="utf-8"?>' +
-                '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
-                '  <soap:Body>' +
-                    '<ObtenerIDContacto xmlns="BGlobalSolutions.com">' +
-                      '<Email>alice.phillips@streamdev.co.uk</Email>' +
-                    '</ObtenerIDContacto>' +
-                  '</soap:Body>' +
-               ' </soap:Envelope>'
+       $.ajax({
+    type: "GET",
+    url: "https://bglobaldemo.entrydns.org/WS/bpmOnline.asmx/ObtenerIDContacto?Email=sawyer@realway.co.uk",
+    contentType: "application/json; charset=utf-8",
+    dataType: "text",
+    success: function(data) {
+        $("#results").html(data.GetTimeResult);
+        console.log(data);
+        }
+    });
 
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4) {
-                    if (xmlhttp.status == 200) {
-                        alert('done. use firebug/console to see network response');
-                    }
-                }
-            }
-            // Send the POST request
-            xmlhttp.setRequestHeader('Content-Type', 'text/xml');
-            xmlhttp.send(sr);
-            var xmlResponse =xmlhttp.responseXML.documentElement;
-
-            var fullNodeList = xmlResponse.getElementsByTagName("Name");
-            alert (fullNodeList);
-            for (var i=0; i < fullNodeList.length; i++)
-            {
-              var eachnode = new Option();
-              eachnode.text = fullNodeList[i].childNodes[0].nodeValue;
-              eachnode.value = fullNodeList[i].attributes[0].value;
-            }
-        
     </script>
         
         
