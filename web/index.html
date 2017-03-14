@@ -51,8 +51,16 @@
             // Send the POST request
             xmlhttp.setRequestHeader('Content-Type', 'text/xml');
             xmlhttp.send(sr);
-            // send request
-            // ...
+            var xmlResponse =xmlhttp.responseXML.documentElement;
+
+            var fullNodeList = xmlResponse.getElementsByTagName("Name");
+            alert (fullNodeList);
+            for (var i=0; i < fullNodeList.length; i++)
+            {
+              var eachnode = new Option();
+              eachnode.text = fullNodeList[i].childNodes[0].nodeValue;
+              eachnode.value = fullNodeList[i].attributes[0].value;
+            }
         }
     </script>
         
