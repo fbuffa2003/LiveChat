@@ -26,7 +26,7 @@
     </head>
     <body>
    <script type="text/javascript">
-   function soap() {
+   
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open('POST', 'http://bglobaldemo.entrydns.org:3333/WS/bpmOnline.asmx?op=ObtenerIDContacto/', true);
 
@@ -61,7 +61,7 @@
               eachnode.text = fullNodeList[i].childNodes[0].nodeValue;
               eachnode.value = fullNodeList[i].attributes[0].value;
             }
-        }
+        
     </script>
         
         
