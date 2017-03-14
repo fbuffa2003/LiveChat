@@ -25,37 +25,37 @@
   
     </head>
     <body>
-        
-  
-         <script type="text/javascript">
-           
-      $(document).ready(function () {
-            $.ajax({
-                 xhrFields: {
-    withCredentials: true
-},
-                headers: { 'Access-Control-Allow-Origin': 'http://localhost' },
-                url: "http://bglobaldemo.entrydns.org:3333/WS/bpmOnline.asmx?op=ObtenerIDContacto",
-                contentType: 'text/xml; charset=utf-8',
-                type: "GET",
-                crossDomain: true,
-            dataType: "text",
-            success: function(xml) {
-             console.log(xml);             
-               alert(xml);
-          },
-            error: function (xhr, status) {         
-                console.log(xhr);       
+   <script type="text/javascript">
+   function soap() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('POST', 'http://bglobaldemo.entrydns.org:3333/WS/bpmOnline.asmx?op=ObtenerIDContacto/', true);
+
+            // build SOAP request
+            var sr =
+                '<?xml version="1.0" encoding="utf-8"?>' +
+                '<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">' +
+                '  <soap:Body>' +
+                    '<ObtenerIDContacto xmlns="BGlobalSolutions.com">' +
+                      '<Email>alice.phillips@streamdev.co.uk</Email>' +
+                    '</ObtenerIDContacto>' +
+                  '</soap:Body>' +
+               ' </soap:Envelope>'
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        alert('done. use firebug/console to see network response');
+                    }
+                }
             }
-              
-            });
-
-           }); 
-       
-     
-
-         </script>
-   
+            // Send the POST request
+            xmlhttp.setRequestHeader('Content-Type', 'text/xml');
+            xmlhttp.send(sr);
+            // send request
+            // ...
+        }
+    </script>
+        
         
         <div class="chat-plugin" id="chatPluginContainer">
             <ul class="chat-plugin__menu">
