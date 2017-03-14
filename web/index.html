@@ -34,18 +34,17 @@
                  xhrFields: {
     withCredentials: true
 },
+                headers: { 'Access-Control-Allow-Origin': '*' }
                 url: "http://bglobaldemo.entrydns.org:3333/WS/bpmOnline.asmx?op=ObtenerIDContacto",
                 contentType: 'text/xml; charset=utf-8',
                 type: "GET",
                 crossDomain: true,
             dataType: "text",
             success: function(xml) {
-                xml.AddHeader("Access-Control-Allow-Origin","*")
              console.log(xml);             
                alert(xml);
           },
-            error: function (xhr, status) {
-               
+            error: function (xhr, status) {         
                 console.log(xhr);       
             }
               
